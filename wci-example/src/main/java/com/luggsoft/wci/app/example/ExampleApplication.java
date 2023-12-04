@@ -4,14 +4,14 @@ import com.luggsoft.wci.core.notifications.NotificationLevel;
 import com.luggsoft.wci.core.notifications.NotificationStore;
 import com.luggsoft.wci.core.process.DefaultProcessContext;
 import com.luggsoft.wci.core.process.ProcessManager;
-import com.luggsoft.wci.module.spring.EnableAtc;
+import com.luggsoft.wci.module.spring.EnableWci;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Random;
 import java.util.UUID;
 
-@EnableAtc
+@EnableWci
 @SpringBootApplication
 public class ExampleApplication
 {

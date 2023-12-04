@@ -3,8 +3,8 @@ package com.luggsoft.wci.core.jsonschema
 import com.github.victools.jsonschema.generator.Module
 import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder
 
-class AtcModule(
-    private val options: Set<AtcOption> = emptySet(),
+class WciModule(
+    private val options: Set<WciOption> = emptySet(),
 ) : Module
 {
     override fun applyToConfigBuilder(builder: SchemaGeneratorConfigBuilder)
@@ -17,8 +17,8 @@ class AtcModule(
     }
 }
 
-enum class AtcOption
+enum class WciOption
 
 fun example() {
-    val module = AtcModule()
+    val module = WciModule()
 }

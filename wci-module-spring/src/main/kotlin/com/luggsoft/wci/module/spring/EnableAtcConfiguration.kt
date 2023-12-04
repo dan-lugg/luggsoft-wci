@@ -252,11 +252,11 @@ class EnableAtcConfiguration : ImportBeanDefinitionRegistrar, EnvironmentAware
     
     override fun registerBeanDefinitions(annotationMetadata: AnnotationMetadata, beanDefinitionRegistry: BeanDefinitionRegistry)
     {
-        val attributesMap = annotationMetadata.getAnnotationAttributes(EnableAtc::class.java.getCanonicalName())
+        val attributesMap = annotationMetadata.getAnnotationAttributes(EnableWci::class.java.getCanonicalName())
         val annotationAttributes = AnnotationAttributes(attributesMap!!)
         val componentProvider = ClassPathScanningCandidateComponentProvider(true, this.environment)
         val basePackages = Companion.getBasePackages(annotationMetadata as StandardAnnotationMetadata, annotationAttributes)
-            .plus(EnableAtc::class.java.packageName)
+            .plus(EnableWci::class.java.packageName)
         
         // componentProvider.addIncludeFilter(AnnotationTypeFilter(MyAnnotation::class.java, true))
         

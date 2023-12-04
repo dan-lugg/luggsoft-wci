@@ -1,12 +1,11 @@
-# Airmiles ATC
+# Luggsoft WCI
 
 ## Overview
 
-**Airmiles ATC**, otherwise known as, the  **Airmiles, Air Traffic Controller**, is a task execution framework. One of the key use-cases is converting test suites into first-class, AWS-deployed applications. These applications are intended to be deployed alongside the project(s) they are intended to test.
+
+**Luggsoft, WCI**, otherwise known as, the  **Web Command Interface**, is a task execution framework. One of the key use-cases is converting test suites into first-class, AWS-deployed applications. These applications are intended to be deployed alongside the project(s) they are intended to test.
 
 TODO: More information for the overview.
-
-> 🤓 **Editorial** &mdash; If anything is named `ATCO` rather than `ATC`, it's because that was the first relatable initialism I encountered.
 
 > 🤔 **Q** &ndash; TODO Question.
 >
@@ -16,7 +15,7 @@ TODO: More information for the overview.
 
 ```mermaid
 gantt
-    title ATC Feature Roadmap
+    title WCI Feature Roadmap
     dateFormat YYYY-MM-DD
     section Version 0.1
         Core Server Codebase  : done,   cf1,  2023-10-15, 2023-11-05
@@ -51,7 +50,7 @@ TODO: More information about conventions.
 
 ### Commands
 
-Commands comprise the core of all interactivity with a given deployed ATC project instance. Commands represent arbitrary requests, executions, and the corresponding results.
+Commands comprise the core of all interactivity with a given deployed WCI project instance. Commands represent arbitrary requests, executions, and the corresponding results.
 
 There are two main base-types for all user-defined commands; "**await**" commands, and "**async**" commands.
 
@@ -109,7 +108,7 @@ The command prefixes follow the "SCUDI" pattern of select, create, update, delet
 
 ##### Suffixes
 
-The defined framework classes of `CommandResult`, `AtcCommandRequest`, and `CommandHandler` are not intended to be used directly. Instead, the applicable "**await**" or "**async**" base types should be implemented when creating user-defined command classes.
+The defined framework classes of `CommandResult`, `WciCommandRequest`, and `CommandHandler` are not intended to be used directly. Instead, the applicable "**await**" or "**async**" base types should be implemented when creating user-defined command classes.
 
 In the case of "**await**", the classes are:
 
@@ -128,7 +127,7 @@ These full suffixes should be incorporated into the class naming strategy for al
 | Suffix   | Intent                                                                                                                                   | Returns                                      |
 |----------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
 | `Await*` | For commands that return immediately, such as data queries, single resource creation functions, etc.                                     | The resulting data, implementation specific. |
-| `Async*` | For commands that start a long-lived process or thread, such as test invocations, complex batch create / update / delete processes, etc. | A descriptor of the started process.         |
+| `Async*` | For commands that start a long-lived process or thread, such as test invocations, complex batchh create / update / delete processes, etc. | A descriptor of the started process.         |
 
 > 🤓 **Editorial** &ndash; These might not be the most *correct* names, but they describe intent accurately enough for the purpose of this framework. Please feel free to propose alternatives.
 
@@ -150,11 +149,11 @@ These full suffixes should be incorporated into the class naming strategy for al
 - Must implement `[Async|Await]CommandResult`.
     - For example `SelectUserAwaitCommandResult : AwaitCommandResult`
 
-##### `*AtcCommandRequest`
+##### `*WciCommandRequest`
 
-- Should follow the convention of `<name>[Async|Await]AtcCommandRequest`. For example, `SelectUserAwaitCommandRequest`.
-- Must implement `[Async|Await]AtcCommandRequest` with the appropriate type parameters.
-    - For example, `SelectUserCommandRequest : AtcCommandRequest<SelectUserCommandResult>`.
+- Should follow the convention of `<name>[Async|Await]WciCommandRequest`. For example, `SelectUserAwaitCommandRequest`.
+- Must implement `[Async|Await]WciCommandRequest` with the appropriate type parameters.
+    - For example, `SelectUserCommandRequest : WciCommandRequest<SelectUserCommandResult>`.
 
 ##### `*CommandHandler`
 
@@ -183,7 +182,7 @@ flowchart TD
     Root["#"]
     User["/user"]
     Command["/command"]
-    AtcCommandRequest["/request"]
+    WciCommandRequest["/request"]
     SelectCommandRequest["/select"]
     DetailCommandRequest["/{id}/detail"]
     InvokeCommandRequest["/{id}/invoke"]
@@ -198,10 +197,10 @@ flowchart TD
 %% ---
     Root --> User
     Root --> Command
-    Command --> AtcCommandRequest
-    AtcCommandRequest --> SelectCommandRequest
-    AtcCommandRequest --> DetailCommandRequest
-    AtcCommandRequest --> InvokeCommandRequest
+    Command --> WciCommandRequest
+    WciCommandRequest --> SelectCommandRequest
+    WciCommandRequest --> DetailCommandRequest
+    WciCommandRequest --> InvokeCommandRequest
     Command --> CommandProcess
     CommandProcess --> SelectCommandProcess
     CommandProcess --> DetailCommandProcess
@@ -214,7 +213,7 @@ flowchart TD
 
 ## Web Component Map
 
-### `atc-command-request-invoker`
+### `WCI-command-request-invoker`
 
 ```mermaid
 flowchart TD
@@ -244,14 +243,14 @@ flowchart TD
 ## Common
 
 ```yaml
-atc: # Root property
+wci: # Root property
   TODO: # The rest
 ```
 
 ## Spring
 
 ```yaml
-atc: # Root property
+wci: # Root property
     commands: # Commands property 
     # TODO
     notifications: # Notifications property

@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Import
 @Retention(AnnotationRetention.RUNTIME)
 @Import(EnableAtcConfiguration::class)
 @ComponentScan("com.luggsoft.wci.module.spring")
-annotation class EnableAtc(
+annotation class EnableWci(
     val basePackages: Array<String> = [],
 )
